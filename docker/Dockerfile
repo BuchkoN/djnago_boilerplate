@@ -18,6 +18,7 @@ COPY --from=builder requirements.dev.txt /app
 RUN apt update -y && \
     apt install -y python3-dev \
     gcc \
+    libpq-dev \
     musl-dev && \
     pip install --upgrade pip && pip install --no-cache-dir -r requirements.dev.txt
 

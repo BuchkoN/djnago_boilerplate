@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "fastapi-app"
+name = "django-app"
 version = "0.1.0"
 description = ""
 authors = ["nikitabucko <buchkonikita97@gmail.com>"]
@@ -7,9 +7,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.111.0"
-motor = "^3.4.0"
-uvicorn = "^0.29.0"
+django = "^5.0.6"
+psycopg2-binary = "^2.9.9"
 
 
 [tool.poetry.group.dev.dependencies]

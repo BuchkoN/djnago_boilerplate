@@ -1,4 +1,4 @@
-# FastAPI + Kafka + MongoDB boilerplate
+# Django + Postgres boilerplate
 
 ## Requirements
 
