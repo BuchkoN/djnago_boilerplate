@@ -1,0 +1,29 @@
+version: '3.9'
+
+volumes:
+  storage_data:
+
+services:
+  storage_app:
+    container_name: storage_app
+    image: mongo:6-jammy
+    ports:
+      - '27017:27017'
+    volumes:
+      - storage_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${STORAGE_DB_USERNAME:?}
+      MONGO_INITDB_ROOT_PASSWORD: ${STORAGE_DB_PASSWORD:?}
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: true
+
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    restart: always
+    ports:
+      - 28081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${STORAGE_DB_USERNAME:?}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${STORAGE_DB_PASSWORD:?}
+      ME_CONFIG_MONGODB_URL: mongodb://${STORAGE_DB_USERNAME:?}:${STORAGE_DB_PASSWORD:?}@storage_app:27017/
+      ME_CONFIG_BASICAUTH: false
